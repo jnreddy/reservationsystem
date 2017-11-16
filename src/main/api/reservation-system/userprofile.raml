@@ -1,0 +1,46 @@
+#%RAML 0.8
+title: User Management API
+version: 1.0
+#baseUri: https://localhost:8091/api/busregervation/user
+baseUri: https://mocksvc.mulesoft.com/mocks/49f7038c-2720-4e05-b7e8-da8aa5ff9560/api/busregervation/user
+schemas: 
+  - userdata: !include schema/userdata.json
+/registeruser:
+  post:
+    description: Post user details in Request parameters 
+    #headers: 
+    body: 
+      application/json:
+        schema: userdata
+        example: !include example/userdata_sample.json
+    responses: 
+      201:
+        body: 
+          application/json:
+            example: |
+              {
+                "data": {
+                    "results": "user created",
+                     "userid": "121313"
+                                     
+                  },
+                 
+              "success":true,
+              "status": 201
+              }
+/getuserdetails:
+    displayName: Retrieves user details for the given userid
+    get:
+      queryParameters: 
+        userid:
+          type: string
+          required: true
+          example: johndave
+      responses: 
+        201:
+          body: 
+            application/json:
+              schema: userdata
+              example: !include example/userdata_sample.json
+    
+              

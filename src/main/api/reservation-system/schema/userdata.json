@@ -1,0 +1,80 @@
+{
+  "definitions": {}, 
+  "$schema": "http://json-schema.org/draft-06/schema#", 
+  "$id": "http://reservation.com/userdetails.json", 
+  "type": "object", 
+  "properties": {
+  "userid": {
+      "$id": "/properties/userid", 
+      "type": "string", 
+      "description": "User log in id.", 
+      "default": "", 
+      "examples": [
+        "johndave"
+      ]
+    }, 
+    "userfirstname": {
+      "$id": "/properties/userfirstname", 
+      "type": "string", 
+      "description": "User first name.", 
+      "default": "", 
+      "examples": [
+        "John"
+      ]
+    }, 
+    "usermiddlename": {
+      "$id": "/properties/usermiddlename", 
+      "type": "string", 
+      "description": "User middle name.", 
+      "default": "", 
+      "examples": [
+        "Dave"
+      ]
+    }, 
+    "userlastname": {
+      "$id": "/properties/userlastname", 
+      "type": "string", 
+      "description": "User last name.", 
+      "default": "", 
+      "examples": [
+        "Mark"
+      ]
+    }, 
+    "userage": {
+      "$id": "/properties/userage", 
+      "type": "integer", 
+      "description": "User age", 
+      "default": 0, 
+      "examples": [
+        26
+      ]
+    }, 
+    "userdob": {
+      "$id": "/properties/userdob", 
+      "type": "string", 
+      "description": "User Date of Birth.", 
+      "default": "", 
+      "examples": [
+        "03/22/1985"
+      ]
+    }, 
+    "phoneNumber": {
+      "$id": "/properties/phoneNumber", 
+      "type": "string", 
+      "description": "User phone number", 
+      "default": "", 
+      "examples": [
+        "9900123450"
+      ]
+    }, 
+    "email": {
+      "$id": "/properties/email", 
+      "type": "string", 
+      "description": "User's valid email address.", 
+      "default": "", 
+      "examples": [
+        "abc@abcsdsd.com"
+      ]
+    }
+  }
+}
