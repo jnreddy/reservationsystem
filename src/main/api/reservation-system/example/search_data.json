@@ -1,0 +1,16 @@
+{
+    "response": [
+    {
+      "id": 1,
+      "buscode": "John",
+      "origin": "NYC",
+      "destination": "BOS",
+      "departureDate": "03/22/2017",
+      "arrivalDate": "03/22/2017",
+      "departureTime": "10:20:00",
+      "arrivalTime": "13:20:00",
+      "emptyseats": "29",
+      "price": 400.5
+    }
+  ]
+}
