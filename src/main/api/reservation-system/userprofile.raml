@@ -5,6 +5,7 @@ version: 1.0
 baseUri: https://mocksvc.mulesoft.com/mocks/49f7038c-2720-4e05-b7e8-da8aa5ff9560/api/busregervation/user
 schemas: 
   - userdata: !include schema/userdata.json
+  - search: !include schema/searchservice.json
 /registeruser:
   post:
     description: Post user details in Request parameters 
@@ -12,7 +13,6 @@ schemas:
     body: 
       application/json:
         schema: userdata
-        example: !include example/userdata_sample.json
     responses: 
       201:
         body: 
@@ -42,5 +42,41 @@ schemas:
             application/json:
               schema: userdata
               example: !include example/userdata_sample.json
-    
-              
+/authuser:
+  displayName: authenticates user by userid and password
+  get:
+    queryParameters: 
+      userid:
+        type: string
+        required: true
+        example: johndave
+      password:
+        type: string
+        required: true
+        example: password
+/getavailableservices:
+  get:
+    body: 
+    queryParameters: 
+      origin:
+        type: string
+        description: start point of the journey
+        example: NYC for Newyork City
+      destination:
+        type: string
+        description: end point of the journey
+        example: BOS for Boston
+      departureDate:
+        type: date
+        description: start date of the journey
+        example: 12/24/2017
+      arrivalDate:
+        type: date
+        description: end date of the journey if selected round trip
+        example: 12/27/2017
+    responses: 
+      201:
+        body: 
+          application/json:
+            schema: search
+            example: !include example/search_data.json

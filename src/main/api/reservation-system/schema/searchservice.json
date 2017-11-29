@@ -1,0 +1,109 @@
+{
+  "definitions": {}, 
+  "$schema": "http://json-schema.org/draft-06/schema#", 
+  "$id": "http://example.com/search.json", 
+  "type": "object", 
+  "properties": {
+    "response": {
+      "$id": "/properties/response", 
+      "type": "array", 
+      "items": {
+        "$id": "/properties/response/items", 
+        "type": "object", 
+        "properties": {
+          "id": {
+            "$id": "/properties/response/items/properties/id", 
+            "type": "integer", 
+            "description": "unique id for the service.", 
+            "default": 0, 
+            "examples": [
+              1
+            ]
+          }, 
+          "buscode": {
+            "$id": "/properties/response/items/properties/buscode", 
+            "type": "string", 
+            "description": "service code for the bus.", 
+            "default": "", 
+            "examples": [
+              "John"
+            ]
+          },
+          "origin": {
+            "$id": "/properties/response/items/properties/origin", 
+            "type": "string", 
+           "description": "start point of the journey.", 
+            "default": "", 
+            "examples": [
+              "NYC"
+            ]
+          }, 
+          "destination": {
+            "$id": "/properties/response/items/properties/destination", 
+            "type": "string", 
+            "description": "end point of the journey.", 
+            "default": "", 
+            "examples": [
+              "BOS"
+            ]
+          },  
+          "departureDate": {
+            "$id": "/properties/response/items/properties/departureDate", 
+            "type": "string", 
+            "description": "departure date for the journey.", 
+            "default": "", 
+            "examples": [
+              "03/22/2017"
+            ]
+          }, 
+          "arrivalDate": {
+            "$id": "/properties/response/items/properties/arrivalDate", 
+            "type": "string", 
+            "description": "arrival date of the journey.", 
+            "default": "", 
+            "examples": [
+              "03/22/2017"
+            ]
+          },
+          "departureTime": {
+            "$id": "/properties/response/items/properties/departureTime", 
+            "type": "string", 
+            "description": "departure time of the journey.", 
+            "default": "", 
+            "examples": [
+              "10:20:00"
+            ]
+          },
+          "arrivalTime": {
+            "$id": "/properties/response/items/properties/arrivalTime", 
+            "type": "string", 
+            "description": "arrival time of the journey.", 
+            "default": "", 
+            "examples": [
+              "10:20:00"
+            ]
+          }, 
+          "emptyseats": {
+            "$id": "/properties/response/items/properties/emptyseats", 
+            "type": "string", 
+            "description": "number of empty seats.", 
+            "default": "", 
+            "examples": [
+              "29"
+            ]
+          }, 
+          "price": {
+            "$id": "/properties/response/items/properties/price", 
+            "type": "number", 
+            "title": "The Price Schema.", 
+            "description": "price for the available ticket.", 
+            "default": 0.0, 
+            "examples": [
+              400.5
+            ]
+          }
+        }
+      }
+    }
+  }
+}
