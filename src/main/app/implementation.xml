@@ -11,6 +11,13 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
     <flow name="registeruser">
         <set-variable variableName="userData" value="#[message.payloadAs(java.lang.String)]" mimeType="application/json" doc:name="Variable" metadata:id="615ca715-56db-45c3-b112-a067e996a19e"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="c3d10e0e-6e21-4eb0-98b4-b9a62898d1da">
+            <dw:input-payload/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload]]></dw:set-payload>
+        </dw:transform-message>
         <logger level="INFO" doc:name="Logger"/>
         <db:insert config-ref="MySQL_Configuration" doc:name="createuser">
             <db:parameterized-query><![CDATA[insert into user_details (userid,first_name,middle_name,last_name,dob,age,email_id,phone_number) values
@@ -59,14 +66,13 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
         <choice doc:name="Choice">
             <when expression="#[flowVars.userId.userid!=payload.get(0).userid]">
                 <set-property propertyName="Content-type" value="application/json" doc:name="Property"/>
-                <set-payload value="{ uservalid: false }" doc:name="Set Payload"/>
+                <set-payload value="{ result: false }" doc:name="Set Payload"/>
             </when>
             <otherwise>
                 <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
-                <set-payload value="{
-uservalid: true
-}" doc:name="Set Payload"/>
-            </otherwise>
+                <set-payload value="{ result: true }" doc:name="Set Payload"/>
+
+                <logger message="#[payload]" level="INFO" doc:name="Logger"/>            </otherwise>
         </choice>
     </flow>
     <flow name="searchservices">

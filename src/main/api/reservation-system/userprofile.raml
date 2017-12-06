@@ -1,48 +1,37 @@
 #%RAML 0.8
-title: User Management API
+title: Reservation system API
 version: 1.0
 #baseUri: https://localhost:8091/api/busregervation/user
-baseUri: https://mocksvc.mulesoft.com/mocks/49f7038c-2720-4e05-b7e8-da8aa5ff9560/api/busregervation/user
+
 schemas: 
-  - userdata: !include schema/userdata.json
-  - search: !include schema/searchservice.json
-/registeruser:
+   - userdata: !include schema/userdata.json
+   - search: !include schema/searchservice.json
+
+/user/registration:
   post:
     description: Post user details in Request parameters 
-    #headers: 
+   
     body: 
       application/json:
         schema: userdata
     responses: 
-      201:
+      200:
         body: 
           application/json:
-            example: |
-              {
-                "data": {
-                    "results": "user created",
-                     "userid": "121313"
-                                     
-                  },
-                 
-              "success":true,
-              "status": 201
-              }
-/getuserdetails:
+            example: !include example/reguser_resp.json
+ 
+/user/account/{userid}:
+   
     displayName: Retrieves user details for the given userid
     get:
-      queryParameters: 
-        userid:
-          type: string
-          required: true
-          example: johndave
       responses: 
-        201:
+        200:
           body: 
             application/json:
               schema: userdata
               example: !include example/userdata_sample.json
-/authuser:
+
+/user/security/authentication:
   displayName: authenticates user by userid and password
   get:
     queryParameters: 
@@ -54,9 +43,16 @@ schemas:
         type: string
         required: true
         example: password
-/getavailableservices:
+    responses: 
+      200:
+        body: 
+          application/json:
+            example: |
+              {
+                "resut": "true"
+              }
+/search/services:
   get:
-    body: 
     queryParameters: 
       origin:
         type: string
@@ -69,13 +65,14 @@ schemas:
       departureDate:
         type: date
         description: start date of the journey
-        example: 12/24/2017
+        example: 2017-12-23
       arrivalDate:
         type: date
         description: end date of the journey if selected round trip
-        example: 12/27/2017
+        example: 2017-12-24
     responses: 
-      201:
+      200:
+        
         body: 
           application/json:
             schema: search
