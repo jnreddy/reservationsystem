@@ -4,7 +4,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
     <http:listener-config name="userprofile-httpListenerConfig" host="0.0.0.0" port="${http.port}" doc:name="HTTP Listener Configuration"/>
-    <apikit:config name="userprofile-config" raml="reservation-system/userprofile.raml" consoleEnabled="false" doc:name="Router" keepRamlBaseUri="false"/>
+    <apikit:config name="userprofile-config" raml="reservation-system/userprofile.raml" consoleEnabled="false" doc:name="Router"/>
     <flow name="userprofile-main">
         <http:listener config-ref="userprofile-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
         <apikit:router config-ref="userprofile-config" doc:name="APIkit Router"/>
