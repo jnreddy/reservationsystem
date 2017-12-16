@@ -27,7 +27,7 @@
 				<version>2.0</version>
 				<configuration>
 					<deploymentType>cloudhub</deploymentType>
-					<muleVersion>3.7.3</muleVersion>
+					<muleVersion>3.8.1</muleVersion>
 					<username>${uid}</username>
 					<password>${pwd}</password>
 					<workerType>Micro</workerType>
@@ -196,6 +196,10 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
+        <pluginRepository>
+        <id>mule-public</id>
+        <url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+    </pluginRepository>
     </pluginRepositories>
 
 </project>
